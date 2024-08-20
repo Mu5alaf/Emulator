@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load bootstrap5 %}
+{% block head %}
+<title>Home</title>
+{% endblock %}
+{% block nav %}
+<div class="col-md-6 col-sm-3 col-xs-4">
+    <nav class="main-nav" role="navigation">
+        <div class="navbar-header">
+            <button type="button" id="trigger-overlay" class="navbar-toggle">
+                <span class="ion-navicon"></span>
+            </button>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-dark">{% trans 'logout' %}</button>
+            </form>
+        </ul>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="cl-effect-11"><a href="{% url 'accounts:profile' %}">{% trans 'Profile' %}</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="cl-effect-11"><a href="{% url 'home:upload_app' %}">{% trans 'Upload' %}</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</div>
+{% endblock %}
+{% block content %}
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+            <main class="col-sm">
+                <article class="post post-1">
+                    <header class="entry-header">
+                        <h1 class="entry-title"><strong>{% trans "Rubik's Emulator List" %}</strong></h1>
+                    </header>
+                    <div class="entry-content clearfix">
+                        <h1>{% trans "Your APK List" %}</h1>
+                    </div>
+                    {% for app in app_list %}
+                    <hr>
+                        <div class="d-flex justify-content-center list-card">
+                            <div class="card mb-5">
+                                <div class="row g-2">
+                                    <div class="col-md-4">
+                                        <img src="{% static 'img/apk.png' %}" width="250" class="img-fluid rounded-start" alt="{% trans "APK image" %}">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{ app }}</h4>
+                                            <h4 class="card-text">{% trans "Uploaded by" %}: {{ app.uploaded_by }}</h4>
+                                            <h3 class="card-text"><small class="text-muted">{% trans "Last updated" %} {{ app.created_at }}</small></h3>
+                                            <div class  = "btn-continer-apk">
+                                                <form method="POST" action="{% url 'home:run_app' app.id %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-success">{% trans "Run" %}</button>
+                                                </form>
+                                                <a class="btn btn-primary" href="{% url 'home:apk_info' app.id %}" role="button">{% trans "Details" %}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <hr>
+                    {% endfor %}                    
+                </article>
+            </main>
+        </div>
+    </div>
+</div>
+{% endblock %}

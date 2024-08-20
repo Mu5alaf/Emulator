@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% block head %}
+{% load i18n %}
+<title>Change</title>
+{% endblock %}
+{% block nav %}
+<div class="col-md-6 col-sm-3 col-xs-4">
+    <nav class="main-nav" role="navigation">
+        <div class="navbar-header">
+            <button type="button" id="trigger-overlay" class="navbar-toggle">
+                <span class="ion-navicon"></span>
+            </button>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-dark">logout</button>
+            </form>
+        </ul>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="cl-effect-11"><a href="{% url 'home:home_page' %}" data-hover="Home">Home</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</div>
+{% endblock %}
+{% block content %}
+<div class="content-body-edit">
+    <div class="container">
+        <div class="row">
+            <main class="col-sm">
+                <article class="ost post-1">
+                    <header class="entry-header">
+                        <h1 class="entry-title">{% trans "Update Your Info" %}</strong></h1>
+                    </header>
+                    <form method="POST" enctype='multipart/form-data'>
+                        {% csrf_token %}
+                        {% bootstrap_form user_form %}
+                        {% bootstrap_form profile_form %}
+                        <div class="edit-button">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
+                        </div>                  
+                    </form>
+                </article>
+            </main>
+        </div>
+    </div>
+</div>
+{% endblock %}
+    

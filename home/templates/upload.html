@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load bootstrap5 %}
+{% block head %}
+<title>Upload</title>
+{% endblock %}
+{% block nav %}
+<div class="col-md-6 col-sm-3 col-xs-4">
+    <nav class="main-nav" role="navigation">
+        <div class="navbar-header">
+            <button type="button" id="trigger-overlay" class="navbar-toggle">
+                <span class="ion-navicon"></span>
+            </button>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-dark">{% trans 'logout'%}</button>
+            </form>
+        </ul>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="cl-effect-11"><a href="{% url 'accounts:profile' %}">{% trans 'Profile'%}</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="cl-effect-11"><a href="{% url 'home:home_page' %}">{% trans 'Home'%}</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</div>
+{% endblock %}
+{% block content %}
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+            <main class="col-sm">
+                <article class="post post-1">
+                    <header class="entry-header">
+                        <h1 class="entry-title"><strong>{% trans 'Uplaod APK' %}</strong></h1>
+                    </header>
+                    <div class="Upload_apk">
+                    <form method="POST" enctype='multipart/form-data'>
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <div class="edit-button">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">{% trans 'Upload'%}</button>
+                        </div>                  
+                    </form>
+                </div>                
+                </article>
+            </main>
+        </div>
+    </div>
+</div>
+{% endblock %}
+    

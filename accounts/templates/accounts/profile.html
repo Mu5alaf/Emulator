@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block head %}
+<title>Profile</title>
+{% endblock %}
+{% block nav %}
+<div class="col-md-6 col-sm-3 col-xs-4">
+    <nav class="main-nav" role="navigation">
+        <div class="navbar-header">
+            <button type="button" id="trigger-overlay" class="navbar-toggle">
+                <span class="ion-navicon"></span>
+            </button>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-dark">logout</button>
+            </form>
+        </ul>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="cl-effect-11"><a href="{% url 'home:home_page' %}" data-hover="Home">Home</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</div>
+{% endblock %}
+{% block content %}
+<div class="content-body-profile">
+    <div class="container-profile">
+        <div class="row">
+            <main class="col-sm">
+                <article class="post-profile">
+                    {% if user.image and user.image.url %}
+                    <header class="profile-header_2">
+                        <img class="rounded-circle-profile" src="{{ user.image.url }}">
+                    </header>
+                    {% else %}
+                    <header class="profile-header_2">
+                        <img class="rounded-circle-profile" src="{% static 'img/unknown.png' %}">
+                    </header>
+                    {% endif %}
+                    <header class="profile-header">
+                        <h5 class="profile-title"><strong>{% trans "User:" %}</strong>{{user}}</h5>
+                        <h5 class="profile-title"><strong>{% trans "First:" %}</strong>{{user.user.first_name}}</h5>
+                        <h5 class="profile-title"><strong>{% trans "Last:" %}</strong>{{user.user.last_name}}</h5>
+                        <h5 class="profile-title"><strong>{% trans "Address:" %}</strong>{{user.address}}</h5>
+                        <h5 class="profile-title"><strong>{% trans "Email:" %}</strong>{{user.user.email}}</h5>
+                        <h5 class="profile-title"><strong>{% trans "Phone:" %}</strong>{{user.Phone_number}}</h5>
+                        <div class="edit-button">
+                        <a class="btn btn-primary btn-lg" href="{% url 'accounts:profile_edit' %}" role="button">{% trans "Edit" %}</a>
+                        </div>
+                    </header>
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+</div>
+{% endblock %}
+    

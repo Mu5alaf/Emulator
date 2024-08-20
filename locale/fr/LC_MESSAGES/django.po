@@ -1,0 +1,177 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-18 20:08+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\accounts\templates\accounts\edit_profile.html:37
+msgid "Update Your Info"
+msgstr "Mettez à jour vos informations"
+
+#: .\accounts\templates\accounts\profile.html:45
+msgid "User:"
+msgstr "Utilisateur :"
+
+#: .\accounts\templates\accounts\profile.html:46
+msgid "First:"
+msgstr "Prénom :"
+
+#: .\accounts\templates\accounts\profile.html:47
+msgid "Last:"
+msgstr "Nom :"
+
+#: .\accounts\templates\accounts\profile.html:48
+msgid "Address:"
+msgstr "Adresse :"
+
+#: .\accounts\templates\accounts\profile.html:49
+msgid "Email:"
+msgstr "Email :"
+
+#: .\accounts\templates\accounts\profile.html:50
+msgid "Phone:"
+msgstr "Téléphone :"
+
+#: .\accounts\templates\accounts\profile.html:52
+msgid "Edit"
+msgstr "Éditer"
+
+#: .\accounts\templates\registration\logged_out.html:24
+msgid "See You Soon"
+msgstr "À bientôt"
+
+#: .\accounts\templates\registration\login.html:28
+msgid "Have an account?"
+msgstr "Vous avez un compte ?"
+
+#: .\accounts\templates\registration\login.html:34
+msgid "Remember Me"
+msgstr "Se souvenir de moi"
+
+#: .\accounts\templates\registration\login.html:39
+msgid "Register"
+msgstr "S'inscrire"
+
+#: .\accounts\templates\registration\login.html:43
+msgid "Login"
+msgstr "Connexion"
+
+#: .\home\templates\apk_info.html:19 .\home\templates\home.html:19
+#: .\home\templates\upload.html:19
+msgid "logout"
+msgstr "Se déconnecter"
+
+#: .\home\templates\apk_info.html:24 .\home\templates\home.html:24
+#: .\home\templates\upload.html:24
+msgid "Profile"
+msgstr "Profil"
+
+#: .\home\templates\apk_info.html:27 .\home\templates\home.html:27
+#: .\home\templates\upload.html:47
+msgid "Upload"
+msgstr "Téléverser"
+
+#: .\home\templates\apk_info.html:30 .\home\templates\upload.html:27
+msgid "Home"
+msgstr "Accueil"
+
+#: .\home\templates\apk_info.html:38
+msgid "Focus-mode - "
+msgstr "Mode Focus - "
+
+#: .\home\templates\apk_info.html:39
+msgid "Font Size +"
+msgstr "Taille de police +"
+
+#: .\home\templates\apk_info.html:40
+msgid "Font Size -"
+msgstr "Taille de police -"
+
+#: .\home\templates\apk_info.html:48
+msgid "APK Details"
+msgstr "Détails de l'APK"
+
+#: .\home\templates\apk_info.html:55
+msgid "THE UI Hierarchy"
+msgstr "LA Hiérarchie de l'UI"
+
+#: .\home\templates\apk_info.html:59
+msgid "THE APK Screenshots"
+msgstr "LES Captures d'écran de l'APK"
+
+#: .\home\templates\home.html:40
+msgid "Rubik's Emulator List"
+msgstr "Liste des émulateurs Rubik"
+
+#: .\home\templates\home.html:43
+msgid "Your APK List"
+msgstr "Votre liste d'APK"
+
+#: .\home\templates\home.html:51
+msgid "APK image"
+msgstr "Image APK"
+
+#: .\home\templates\home.html:56
+msgid "Uploaded by"
+msgstr "Téléversé par"
+
+#: .\home\templates\home.html:57
+msgid "Last updated"
+msgstr "Dernière mise à jour"
+
+#: .\home\templates\home.html:61
+msgid "Run"
+msgstr "Exécuter"
+
+#: .\home\templates\home.html:63
+msgid "Details"
+msgstr "Détails"
+
+#: .\home\templates\upload.html:40
+msgid "Upload APK"
+msgstr "Téléverser APK"
+
+#: .\project\settings.py:149
+msgid "English"
+msgstr "Anglais"
+
+#: .\project\settings.py:150
+msgid "French"
+msgstr "Français"
+
+#: .\templates\base.html:41
+msgid "Rubik's Emulator"
+msgstr "Emulateur de Rubik"
+
+#: .\templates\base.html:57
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: .\templates\base.html:64
+msgid "login"
+msgstr "Connexion"
+
+#: .\templates\base.html:82
+msgid "Welcome, Emulators and Simulators"
+msgstr "Bienvenue, Emulateurs et Simulateurs"
+
+#: .\templates\base.html:83
+msgid "Try It now"
+msgstr "Essayez maintenant"
+
+#: .\templates\base.html:99
+msgid "2014 ThemeWagon.com"
+msgstr "2014 ThemeWagon.com"

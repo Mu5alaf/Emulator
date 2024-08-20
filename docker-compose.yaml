@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: >
+      sh -c "python manage.py migrate &&
+            python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+      - static_volume:/app/static
+      - media_volume:/app/Files
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      appium:
+        condition: service_started
+    networks:
+      - emulator_network
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: Emulator
+      MYSQL_USER: root
+      MYSQL_PASSWORD: S3cur!ty
+      MYSQL_ROOT_PASSWORD: S3cur!ty
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+    networks:
+      - emulator_network
+
+  appium:
+    image: appium/appium
+    ports:
+      - "4723:4723"
+    volumes:
+      - ./app:/app
+    networks:
+      - emulator_network
+
+volumes:
+  db_data:
+  static_volume:
+  media_volume:
+
+networks:
+  emulator_network:
+    driver: bridge
