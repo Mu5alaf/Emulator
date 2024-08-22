@@ -5,7 +5,7 @@ services:
     build: .
     command: >
       sh -c "python manage.py migrate &&
-            python manage.py runserver 0.0.0.0:8000"
+             python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app
       - static_volume:/app/static
@@ -33,21 +33,25 @@ services:
       - "3307:3306"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      retries: 5
-      start_period: 30s
-      timeout: 5s
+      interval: 15s
+      retries: 10
+      start_period: 50s
+      timeout: 10s
     networks:
       - emulator_network
 
   appium:
     image: appium/appium
+    command: sh -c "appium --allow-insecure chromedriver_autodownload"
     ports:
       - "4723:4723"
+      - "5555:5555"
+    environment:
+      - APPIUM_LOCAL_PORT=4723
+      - ANDROID_DEVICES=emulator-5554  # Use emulator ID
     volumes:
       - ./app:/app
-    networks:
-      - emulator_network
+    network_mode: "host"
 
 volumes:
   db_data:

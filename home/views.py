@@ -44,15 +44,14 @@ def run_app(request,id):
     if request.method == 'POST':
         try:
             app = App.objects.get(id=id)
-            app_list = App.objects.all()
             python_executable = sys.executable
             script_path = os.path.join(settings.BASE_DIR, 'home', 'run_app.py')
             env = os.environ.copy()
             env['PYTHONPATH'] = f"{env.get('PYTHONPATH', '')}:{sys.prefix}/lib/python{sys.version_info.major}.{sys.version_info.minor}/site-packages"
             subprocess.run([python_executable,script_path,str(app.id)],check=True,env=env)
             print(script_path)
-            context = {'app_list':app_list,'app':app}
-            return render(request,'apk_info.html',context)
+            messages.success(request,'App Done Successfully ')
+            return redirect('home:home_page')
         except subprocess.CalledProcessError as e:
             messages.error(request, f'Error running the APK: {e}')
         return redirect('home:home_page')
@@ -62,9 +61,8 @@ def run_app(request,id):
     
 @login_required
 def app_info(request,id):
-    app = App.objects.get(id=id)
-    app_list = App.objects.all()
-    context = {'app_list':app_list,'app':app}
+    app = App.objects.filter(id=id)
+    context = {'app':app}
     return render(request,'apk_info.html',context)
 
 def change_language(request):

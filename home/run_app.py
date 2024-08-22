@@ -24,16 +24,16 @@ def run_app(apk_id):
     apk_path = app.apk_path.path 
     print(apk_path)
     
-    # Set up UiAutomator2Options
+    # Set up desired capabilities using UiAutomator2Options
     options = UiAutomator2Options()
     options.platform_name = 'Android'
-    options.device_name = 'Pixel_4_API_35'
-    options.app = apk_path
+    options.device_name = 'Pixel_4_API_3'  # Ensure this matches your AVD name
+    options.app = apk_path  # Path to the APK you want to test
     options.automation_name = 'UiAutomator2'
-    
-    # Connect to the Appium server and start a session with the specified requirements.
-    driver = webdriver.Remote('http://127.0.0.1:4723', options=options)
-    time.sleep(5)  # Wait for app to load
+
+    # Connect to the Appium server and start a session with the specified options
+    driver = webdriver.Remote('http://172.18.112.1:4723', options=options)
+    time.sleep(90)  # Wait for app to load
     app.ui_hierarchy = driver.page_source
     
     # Start video recording
@@ -46,7 +46,7 @@ def run_app(apk_id):
     
     # Try to find and interact with the button
     try:
-        wait = WebDriverWait(driver, 10)
+        wait = WebDriverWait(driver, 30)
         first_button = wait.until(EC.presence_of_element_located((AppiumBy.ID, "com.google.android.calculator:id/digit_7")))
         first_button.click()
         second_button = wait.until(EC.presence_of_element_located((AppiumBy.ID, "com.google.android.calculator:id/op_add")))
