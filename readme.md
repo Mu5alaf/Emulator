@@ -55,6 +55,5 @@ project-root/
 ```
 
 ## Demo
-Uploading 2024-08-19 15-32-08.mp4…
-
+https://github.com/user-attachments/assets/79345cb6-a1e4-4422-ad5a-a62815f141d4
 
