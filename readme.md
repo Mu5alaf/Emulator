@@ -52,6 +52,7 @@ project-root/
 ├── docker-compose.yml    # Docker Compose configuration
 ├── manage.py             # Django management script
 └── requirements.txt      # Python dependencies
+```
 
 ## Demo
 Uploading 2024-08-19 15-32-08.mp4…
